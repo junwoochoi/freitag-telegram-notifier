@@ -40,7 +40,5 @@ class StockService(
                     imageUrl = it.product.neoProductCoverPhoto.src,
                     product = product)
         }
-
-
     }
 }
