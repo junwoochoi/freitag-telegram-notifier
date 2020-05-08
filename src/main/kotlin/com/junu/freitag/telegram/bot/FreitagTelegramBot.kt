@@ -1,7 +1,9 @@
 package com.junu.freitag.telegram.bot
 
+import com.junu.freitag.property.BotProperties
+import com.junu.freitag.telegram.command.TelegramCommand
+import com.junu.freitag.telegram.handler.CommandHandler
 import mu.KotlinLogging
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import org.telegram.telegrambots.bots.TelegramLongPollingBot
 import org.telegram.telegrambots.meta.api.objects.Message
@@ -9,8 +11,8 @@ import org.telegram.telegrambots.meta.api.objects.Update
 
 @Component
 class FreitagTelegramBot(
-        @Value("\${bot.username}") private val username: String,
-        @Value("\${bot.token}") private val token: String
+        private val botProperties: BotProperties,
+        private val messageHandler: CommandHandler
 ) : TelegramLongPollingBot() {
 
     private val log = KotlinLogging.logger {}
@@ -20,10 +22,15 @@ class FreitagTelegramBot(
 
         val receivedMessage: Message = update.message
 
-        log.debug { "received Message : $receivedMessage" }
+        log.info { "received Message : $receivedMessage" }
+
+        val command = TelegramCommand.findByMessage(receivedMessage.text)
+
+        //TODO("handle Command should be implement")
+
     }
 
-    override fun getBotUsername(): String = this.token
+    override fun getBotUsername(): String = botProperties.username
 
-    override fun getBotToken(): String = this.username
+    override fun getBotToken(): String = botProperties.token
 }
