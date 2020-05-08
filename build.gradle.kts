@@ -32,6 +32,8 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+
+    implementation("com.github.xabgesagtx:telegram-spring-boot-starter:0.22")
     implementation("io.github.microutils:kotlin-logging:1.7.9")
     implementation("org.jsoup:jsoup:1.12.1")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
