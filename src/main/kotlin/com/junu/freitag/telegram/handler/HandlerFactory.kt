@@ -4,11 +4,14 @@ import com.junu.freitag.telegram.command.TelegramCommand
 import org.springframework.stereotype.Component
 
 @Component
-class HandlerFactory() {
+class HandlerFactory(
+        private val startCommandHandler: StartCommandHandler,
+        private val unknownCommandHandler: UnknownCommandHandler
+) {
     fun createFromInput(input: String): CommandHandler {
         return when (TelegramCommand.findByMessage(input)) {
-            TelegramCommand.START -> StartCommandHandler()
-            TelegramCommand.UNKNOWN_COMMAND -> UnknownCommandHandler()
+            TelegramCommand.START -> startCommandHandler
+            TelegramCommand.UNKNOWN_COMMAND -> unknownCommandHandler
             else -> UnknownCommandHandler()
         }
     }
