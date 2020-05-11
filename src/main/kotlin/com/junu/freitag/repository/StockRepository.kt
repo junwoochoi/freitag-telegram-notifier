@@ -1,4 +1,4 @@
-package com.junu.freitag.dao
+package com.junu.freitag.repository
 
 import com.junu.freitag.entity.Product
 import com.junu.freitag.entity.Stock
@@ -8,7 +8,7 @@ import org.jetbrains.exposed.sql.and
 import org.springframework.stereotype.Repository
 
 @Repository
-class StockDao {
+class StockRepository {
 
     fun create(stockId: String, color: String, imageUrl: String, product: Product): Stock =
             Stock.new {
