@@ -12,9 +12,9 @@ class User(id: EntityID<Long>) : BaseEntity(id, Users) {
         this.lastSentAt = LocalDateTime.now()
     }
 
-    fun updateUsername(username: String = "") {
+    fun updateUsername(username: String?) {
         if (username != this.username) {
-            this.username = username
+            this.username = username ?: ""
         }
     }
 

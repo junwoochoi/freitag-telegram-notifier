@@ -14,9 +14,9 @@ class UserRepository {
                 Users.telegramId eq id
             }.firstOrNull()
 
-    fun create(telegramId: Int, username: String = "") = User.new {
+    fun create(telegramId: Int, username: String?) = User.new {
         this.telegramId = telegramId
-        this.username = username
+        this.username = username ?: ""
         this.lastSentAt = LocalDateTime.now()
         this.lastCommand = TelegramCommand.UNKNOWN_COMMAND
     }
