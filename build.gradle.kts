@@ -24,6 +24,7 @@ extra["springCloudVersion"] = "Hoxton.SR4"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-aop")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.jetbrains.exposed:exposed-spring-boot-starter:${exposedVersion}")
