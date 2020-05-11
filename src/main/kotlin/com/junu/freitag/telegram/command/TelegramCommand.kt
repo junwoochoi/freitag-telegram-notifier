@@ -3,13 +3,16 @@ package com.junu.freitag.telegram.command
 enum class TelegramCommand(
         private val commandInput: String
 ) {
-    START("/start");
+    START("/start"),
+    ADD_PRODUCT("/add"),
+    LIST_PRODUCT("/list"),
+    UNKNOWN_COMMAND("");
 
     companion object {
         fun findByMessage(input: String): TelegramCommand {
-            val telegramCommand = values().find { it.commandInput == input }
-
-            return checkNotNull(telegramCommand, { "존재하지 않는 명령어 입니다." })
+            val emptySpaceDelimiter = " "
+            val firstPartOfSplit = input.split(emptySpaceDelimiter)[0]
+            return values().find { it.commandInput == firstPartOfSplit } ?: UNKNOWN_COMMAND
         }
     }
 }

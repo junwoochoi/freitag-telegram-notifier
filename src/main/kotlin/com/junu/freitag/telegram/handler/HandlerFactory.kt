@@ -12,7 +12,7 @@ class HandlerFactory(
         return when (TelegramCommand.findByMessage(input)) {
             TelegramCommand.START -> startCommandHandler
             TelegramCommand.UNKNOWN_COMMAND -> unknownCommandHandler
-            else -> UnknownCommandHandler()
+            else -> unknownCommandHandler
         }
     }
 
