@@ -1,9 +1,9 @@
 package com.junu.freitag.telegram.bot
 
-import com.junu.freitag.exception.UserNotExistException
-import com.junu.freitag.property.BotProperties
-import com.junu.freitag.service.UserService
+import com.junu.freitag.global.exception.UserNotExistException
+import com.junu.freitag.global.property.BotProperties
 import com.junu.freitag.telegram.handler.HandlerFactory
+import com.junu.freitag.user.service.UserService
 import mu.KotlinLogging
 import org.springframework.stereotype.Component
 import org.telegram.telegrambots.bots.TelegramLongPollingBot
