@@ -1,6 +1,6 @@
 package com.junu.freitag.global.config
 
-import com.junu.freitag.stock.service.StockService
+import com.junu.freitag.domain.stock.service.StockService
 import mu.KotlinLogging
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile

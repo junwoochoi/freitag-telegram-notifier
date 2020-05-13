@@ -1,6 +1,6 @@
 package com.junu.freitag.global.aop
 
-import com.junu.freitag.user.service.UserService
+import com.junu.freitag.domain.user.service.UserService
 import mu.KotlinLogging
 import org.aspectj.lang.JoinPoint
 import org.aspectj.lang.annotation.Aspect

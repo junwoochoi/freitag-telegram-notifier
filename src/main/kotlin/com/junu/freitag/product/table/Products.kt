@@ -1,8 +1,0 @@
-package com.junu.freitag.product.table
-
-import com.junu.freitag.global.table.BaseTable
-
-object Products : BaseTable("products") {
-    val productName = varchar("product_name", 100)
-    val productId = varchar("product_id", 50)
-}
