@@ -1,11 +1,9 @@
 package com.junu.freitag.telegram.command
 
-enum class TelegramCommand(
-        private val commandInput: String
-) {
+enum class TelegramCommand(val commandInput: String) {
     START("/start"),
-    ADD_PRODUCT("/add"),
-    LIST_PRODUCT("/list"),
+    ADD_PRODUCT("/알림 추가"),
+    LIST_PRODUCT("/알림 조회"),
     UNKNOWN_COMMAND("");
 
     companion object {
