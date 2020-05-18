@@ -4,6 +4,7 @@ import com.junu.freitag.global.aop.UserBasicInfo
 import com.junu.freitag.global.exception.UserNotExistException
 import com.junu.freitag.domain.user.service.UserService
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 import org.telegram.telegrambots.meta.api.objects.Message
 import org.telegram.telegrambots.meta.api.objects.Update
 
@@ -13,6 +14,7 @@ class UpdateHandler(private val handlerFactory: HandlerFactory,
 
 
     @UserBasicInfo
+    @Transactional
     fun handle(update: Update) {
         val receivedMessage: Message = update.message
 
