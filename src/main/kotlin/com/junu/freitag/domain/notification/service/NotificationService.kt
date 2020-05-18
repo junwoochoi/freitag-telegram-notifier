@@ -13,7 +13,7 @@ class NotificationService(private val notificationRepository: NotificationReposi
 
     @Transactional
     fun create(productId: Long, user: User) {
-        val product = productService.findById(productId) ?: throw IllegalArgumentException("존재하지 않는 제품입니다.")
+        val product = productService.findByProductId(productId.toString()) ?: throw IllegalArgumentException("존재하지 않는 제품입니다.")
         notificationRepository.create(user,product)
     }
 

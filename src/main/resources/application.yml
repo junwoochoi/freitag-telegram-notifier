@@ -4,6 +4,7 @@ spring:
     driverClassName: org.h2.Driver
     username: sa
     password:
+    initialization-mode: embedded
   exposed:
     generate-ddl: true
 
@@ -11,3 +12,4 @@ spring:
 freitag.url: https://www.freitag.ch/en
 
 logging.level.Exposed: DEBUG
+

@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional(readOnly = true)
 class ProductService(private val productRepository: ProductRepository) {
     fun findAll() = productRepository.findAll()
-    fun findById(id: Long) = productRepository.findById(id)
+    fun findByProductId(productId: String) = productRepository.findByProductId(productId)
 
 
 
