@@ -1,5 +1,6 @@
 package com.junu.freitag.domain.stock.service
 
+import com.junu.freitag.domain.notification.service.NotificationService
 import com.junu.freitag.global.client.FreitagApiClient
 import com.junu.freitag.domain.product.entity.Product
 import com.junu.freitag.domain.stock.repository.StockRepository
@@ -11,7 +12,8 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional
 class StockService(
         private val freitagApiClient: FreitagApiClient,
-        private val stockRepository: StockRepository
+        private val stockRepository: StockRepository,
+        private val notificationService: NotificationService
 ) {
 
     fun refreshStocks() {
@@ -32,14 +34,15 @@ class StockService(
 
         val exists = stockRepository.findMarkedExists()
 
-        stocks.products.filter { wrapper ->
-            !exists.any { it.stockId == wrapper.product.productId }
-        }.map {
-            stockRepository.create(
-                    stockId = it.product.productId,
-                    color = it.product.neoProductColors.trim(),
-                    imageUrl = it.product.neoProductCoverPhoto.src,
-                    product = product)
-        }
+        stocks.products.asSequence()
+                .filter { wrapper ->
+                    !exists.any { it.stockId == wrapper.product.productId }
+                }.map {
+                    stockRepository.create(
+                            stockId = it.product.productId,
+                            color = it.product.neoProductColors.trim(),
+                            imageUrl = it.product.neoProductCoverPhoto.src,
+                            product = product)
+                }.forEach { notificationService.notifyProduct(it.product.productId, it.imageUrl) }
     }
 }

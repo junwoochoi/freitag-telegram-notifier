@@ -1,5 +1,6 @@
 package com.junu.freitag.global.config
 
+import com.junu.freitag.domain.notification.service.NotificationService
 import com.junu.freitag.domain.stock.service.StockService
 import mu.KotlinLogging
 import org.springframework.context.annotation.Configuration
@@ -13,7 +14,10 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar
 @Configuration
 @Profile("prod")
 @EnableScheduling
-class ScheduleConfig(private val stockService: StockService) : SchedulingConfigurer {
+class ScheduleConfig(
+        private val stockService: StockService,
+        private val notificationService: NotificationService
+) : SchedulingConfigurer {
     private val log = KotlinLogging.logger {}
 
     companion object {

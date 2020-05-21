@@ -3,11 +3,13 @@ INSERT INTO products
     CREATED_AT   ,
     MODIFIED_AT  ,
     PRODUCT_NAME ,
-    PRODUCT_ID
+    PRODUCT_ID,
+    PRODUCT_URL_PREFIX
 ) VALUES
 (
     now(),
     now(),
-    'F343_01431 CASE FOR IPHONE XS/X',
-    16863
+    'IPHONE XS/X 케이스',
+    16863,
+    'f343'
 );

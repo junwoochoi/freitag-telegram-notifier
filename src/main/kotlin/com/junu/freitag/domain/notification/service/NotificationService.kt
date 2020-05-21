@@ -17,4 +17,8 @@ class NotificationService(private val notificationRepository: NotificationReposi
         notificationRepository.create(user,product)
     }
 
+    fun notifyProduct(productId: String, imageUrl: String) {
+        //TODO 새로운 프로덕트에 알림 설정된 사람들에게 알림전송
+    }
+
 }
